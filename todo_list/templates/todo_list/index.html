@@ -1,9 +1,9 @@
-{% if latest_question_list %}
+{% if tasks_list %}
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% for task in tasks_list %}
+        <li>{{ task.task_text }}</li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No todos are available.</p>
+    <p>No tasks are available.</p>
 {% endif %}
