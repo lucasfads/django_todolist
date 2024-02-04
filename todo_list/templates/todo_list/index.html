@@ -1,9 +1,26 @@
-{% if tasks_list %}
-    <ul>
-    {% for task in tasks_list %}
-        <li>{{ task.task_text }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No tasks are available.</p>
-{% endif %}
+{% load static %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="{% static 'todo_list/style.css' %}">
+
+<div id="container">
+    <h1>
+        To-Do List
+        {% comment %} <i class="fa fa-plus-square" aria-hidden="true"></i> {% endcomment %}
+    </h1>
+
+    {% if tasks_list %}
+        <ul>
+        {% for task in tasks_list %}
+            <li>
+                {% comment %} <i class="fa fa-trash fa-fw" aria-hidden="true"></i> {% endcomment %}
+                <span>{{ task.task_text }}</span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks are available.</p>
+    {% endif %}
+
+</div>
