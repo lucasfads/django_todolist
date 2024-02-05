@@ -49,7 +49,6 @@ $(document).ready(function() {
         }
     });
 
-    // Alternar visibilidade do campo de entrada
     $(".fa-plus-square").click(function() {
         $("input[type='text']").fadeToggle();
     });
