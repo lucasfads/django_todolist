@@ -5,7 +5,7 @@ from . import views
 app_name = "todo_list"
 urlpatterns = [
     path("", views.index, name="index"),
-    # path("<int:pk>/", views.DetailView.as_view(), name="detail"),
-    # path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),
-    # path("<int:question_id>/vote/", views.vote, name="vote"),
+    path('add/', views.add_task, name='add_task'),
+    path('delete/<int:task_id>/', views.delete_task, name='delete_task'),
+    path('toggle-done/<int:task_id>/', views.toggle_task_done, name='toggle_task_done'),
 ]

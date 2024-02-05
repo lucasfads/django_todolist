@@ -7,20 +7,24 @@
 <div id="container">
     <h1>
         To-Do List
-        {% comment %} <i class="fa fa-plus-square" aria-hidden="true"></i> {% endcomment %}
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
     </h1>
 
-    {% if tasks_list %}
-        <ul>
+    <form id="taskForm" action="{% url 'todo_list:add_task' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="task_text" placeholder="Add New Todo">
+    </form>
+
+    <ul id="taskList">
         {% for task in tasks_list %}
-            <li>
-                {% comment %} <i class="fa fa-trash fa-fw" aria-hidden="true"></i> {% endcomment %}
-                <span>{{ task.task_text }}</span>
-            </li>
+        <li data-id="{{ task.id }}">
+            <i class='fa fa-trash fa-fw' aria-hidden='true'></i>
+            <span {% if task.done %}class="done"{% endif %}>{{ task.task_text }}</span>
+        </li>
         {% endfor %}
-        </ul>
-    {% else %}
-        <p>No tasks are available.</p>
-    {% endif %}
+    </ul>
 
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{% static 'todo_list/script.js' %}"></script>
